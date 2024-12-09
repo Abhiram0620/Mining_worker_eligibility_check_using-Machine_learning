@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Health Status Form</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f7fb;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            color: #4CAF50;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+            background-color: #f9f9f9;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: #4CAF50;
+            background-color: #fff;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Disease Health Status Form</h1>
+        <form action="/predict" method="POST">
+            <div class="form-group">
+                <label for="disease">Select Disease</label>
+                <select id="disease" name="disease">
+                    {% for disease in Disease_lists %}
+                    <option value="{{ disease }}">{{ disease }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fever">Fever</label>
+                    <select id="fever" name="fever">
+                        {% for fever in Fever_lists %}
+                        <option value="{{ fever }}">{{ fever }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cough">Cough</label>
+                    <select id="cough" name="cough">
+                        {% for cough in Cough_lists %}
+                        <option value="{{ cough }}">{{ cough }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="fatigue">Fatigue</label>
+                    <select id="fatigue" name="fatigue">
+                        {% for fatigue in Fatigue_lists %}
+                        <option value="{{ fatigue }}">{{ fatigue }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="difficulty_breathing">Difficulty Breathing</label>
+                    <select id="difficulty_breathing" name="difficulty_breathing">
+                        {% for difficulty in Difficulty_Breathing_lists %}
+                        <option value="{{ difficulty }}">{{ difficulty }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input type="number" id="age" name="age" min="1" max="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender">
+                        {% for gender in Gender_lists %}
+                        <option value="{{ gender }}">{{ gender }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="blood_pressure">Blood Pressure</label>
+                    <select id="blood_pressure" name="blood_pressure">
+                        {% for bp in Blood_Pressure_lists %}
+                        <option value="{{ bp }}">{{ bp }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cholesterol_level">Cholesterol Level</label>
+                    <select id="cholesterol_level" name="cholesterol_level">
+                        {% for cholesterol in Cholesterol_Level_lists %}
+                        <option value="{{ cholesterol }}">{{ cholesterol }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <input type="hidden" name="outcome" value="Not Suitable to work today">
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disease Health Status Form</title>
+    <style>
+        /* Your existing CSS goes here */
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h1>Disease Health Status Form</h1>
+        <form action="#" method="post">
+            <!-- Disease Selection -->
+            <div class="form-group">
+                <label for="disease">Select Disease</label>
+                <select id="disease" name="disease">
+                    {% for disease in Disease_lists %}
+                    <option value="{{ disease }}">{{ disease }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Symptoms Section -->
+            <div class="form-group">
+                <label for="symptoms">Select Symptoms</label>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fever">Fever</label>
+                        <select id="fever" name="fever">
+                            {% for fever in Fever_lists %}
+                            <option value="{{ fever }}">{{ fever }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cough">Cough</label>
+                        <select id="cough" name="cough">
+                            {% for cough in Cough_lists %}
+                            <option value="{{ cough }}">{{ cough }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fatigue">Fatigue</label>
+                        <select id="fatigue" name="fatigue">
+                            {% for fatigue in Fatigue_lists %}
+                            <option value="{{ fatigue }}">{{ fatigue }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="difficulty_breathing">Difficulty Breathing</label>
+                        <select id="difficulty_breathing" name="difficulty_breathing">
+                            {% for difficulty in Difficulty_Breathing_lists %}
+                            <option value="{{ difficulty }}">{{ difficulty }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Age and Gender -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input placeholder="Enter worker age" type="number" id="age" name="age" min="1" max="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender" name="gender">
+                        {% for gender in Gender_lists %}
+                        <option value="{{ gender }}">{{ gender }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <!-- Blood Pressure and Cholesterol -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="blood_pressure">Blood Pressure</label>
+                    <select id="blood_pressure" name="blood_pressure">
+                        {% for bp in Blood_Pressure_lists %}
+                        <option value="{{ bp }}">{{ bp }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cholesterol_level">Cholesterol Level</label>
+                    <select id="cholesterol_level" name="cholesterol_level">
+                        {% for cholesterol in Cholesterol_Level_lists %}
+                        <option value="{{ cholesterol }}">{{ cholesterol }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+
+            <!-- Hidden Outcome Field -->
+            <input type="hidden" name="outcome" value="Not Suitable to work today">
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
